@@ -1,0 +1,22 @@
+<div class="TaskLists index">
+  <h2>Task Lists</h2>
+
+  <%= link_to("Add new task list", '#', :class => 'action new') %>
+
+  <table class="listing">
+    <caption>Task list</caption>
+    <tr class="header">
+      <th>#</th>
+    </tr>
+    <%= @task_lists.each do |list| %>
+    <tr>
+      <td><%= list.hidden ? 'Yes' : 'No' %></td>
+      <td class="actions">
+        <%= link_to("Show", '#', :class => 'action show') %>
+        <%= link_to("Edit", '#', :class => 'action edit') %>
+        <%= link_to("Delete", '#', :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
