@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 2022-07-18 11:29:09
-  name: MyString
-  description: MyString
-  deadline: 2022-07-18 11:29:09
+  id: 1
+  name: Clen up living room
+  description: Vacuum living room and take out the trash.
+  deadline: Date.today+3
 
 two:
-  id: 2022-07-18 11:29:09
-  name: MyString
-  description: MyString
-  deadline: 2022-07-18 11:29:09
+  id: 2
+  name: Do homework
+  description: Do the math homework. Go over Fourier transform once again.
+  deadline: Date.today+5
