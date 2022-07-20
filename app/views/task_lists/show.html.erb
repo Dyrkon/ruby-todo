@@ -1,5 +1,35 @@
-<h1>TaskLists#show</h1>
+<h1>Task list's detail</h1>
 
-<p> <%= link_to('Show list', edit_task_list_path(@task_list.id)) %></p>
+<%= link_to("<< Back to lists", task_lists_path, :class => 'back-link') %>
+
+<p> <%= link_to('Edit list', edit_task_list_path(@task_list.id)) %></p>
+
+<div class="list show">
+  <h2>List detail</h2>
+
+  <table>
+    <caption>Task list view</caption>
+    <tr>
+      <th>Hidden</th>
+      <th><%= @task_list.hidden ? 'Yes' : 'No' %></th>
+    </tr>
+    <tr>
+      <th>Created at</th>
+      <th><%= @task_list.created_at %></th>
+    </tr>
+  </table>
+
+  <h3>Tasks</h3>
+  <table>
+    <caption>Task list</caption>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.name %></td>
+      <td><%=task.description %></td>
+      <td><%=task.deadline %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
 
 
