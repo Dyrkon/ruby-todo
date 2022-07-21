@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'application#index'
-  get 'default/index'
+  get 'index', to: 'application#index'
 
   # get 'task_lists/index'
   # get 'task_lists/show'

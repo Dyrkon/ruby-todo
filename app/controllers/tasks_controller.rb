@@ -10,16 +10,16 @@ class TasksController < ApplicationController
   def create; end
 
   def edit
-    @task = Task.find(where :id => 1)
+    @task = Task.where(:id => params[:id]).first
+  end
 
+  def update
     if @task.save
       redirect_to(tasks_path)
     else
       render('tasks/new')
     end
   end
-
-  def update; end
 
   def delete; end
 

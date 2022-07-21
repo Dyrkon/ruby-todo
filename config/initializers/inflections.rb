@@ -3,7 +3,7 @@
 
 # Add new inflection rules using the following format. Inflections
 # are locale specific, and you may define rules for as many different
-# locales as you wish. All of these examples are active by default:
+# locales as you wish. All of these examples are active by application:
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.plural /^(ox)$/i, "\\1en"
 #   inflect.singular /^(ox)en/i, "\\1"
@@ -11,7 +11,7 @@
 #   inflect.uncountable %w( fish sheep )
 # end
 
-# These inflection rules are supported but not enabled by default:
+# These inflection rules are supported but not enabled by application:
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
