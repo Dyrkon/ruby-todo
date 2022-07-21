@@ -10,15 +10,41 @@ class TaskListsController < ApplicationController
     @tasks = Task.where(:task_list_id => @task_list.id)
   end
 
-  def new; end
+  def new
+    @task_list = TaskList.new
+  end
 
-  def create; end
+  def create
+    @task_list = TaskList.new(task_list_params)
 
-  def edit; end
+    if @task_list.save
+      redirect_to(task_lists_path)
+    else
+      render('task_lists/new')
+    end
+  end
 
-  def update; end
+  def edit
+    @task_list = TaskList.find(params[:id])
+  end
+
+  def update
+    @task_list = TaskList.find(params[:id])
+
+    if @task_list.update(task_list_params)
+      redirect_to(task_lists_path(@task_list))
+    else
+      render('task_lists/edit')
+    end
+  end
 
   def delete; end
 
   def destroy; end
+
+  private
+
+  def task_list_params
+    params.require(:task_list).permit(:name)
+  end
 end

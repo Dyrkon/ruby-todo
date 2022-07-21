@@ -5,28 +5,30 @@
 <p> <%= link_to('Edit list', edit_task_list_path(@task_list.id)) %></p>
 
 <div class="list show">
-  <h2>List detail</h2>
-
+  <h2><%= @task_list.name %> list detail</h2>
   <table>
-    <caption>Task list view</caption>
-    <tr>
-      <th>Hidden</th>
-      <th><%= @task_list.hidden ? 'Yes' : 'No' %></th>
-    </tr>
-    <tr>
-      <th>Created at</th>
-      <th><%= @task_list.created_at %></th>
-    </tr>
-  </table>
-
-  <h3>Tasks</h3>
-  <table>
-    <caption>Task list</caption>
+    <caption><h3>Task list</h3></caption>
     <% @tasks.each do |task| %>
     <tr>
-      <td><%= task.name %></td>
-      <td><%=task.description %></td>
-      <td><%=task.deadline %></td>
+      <tr>
+        <td><b>Name: </b></td>
+        <td><%= task.name %></td>
+      </tr>
+      <tr>
+        <td><b>Description: </b></td>
+        <td><%= task.description %></td>
+      </tr>
+      <tr>
+        <td><b>Deadline: </b></td>
+        <td><%= task.deadline.strftime('%d %B %Y') %></td>
+      </tr>
+      <tr>
+        <td><b>Done: </b></td>
+        <td><%= task.done ? 'Yes' : 'No' %></td>
+      </tr>
+      <tr>
+        <td><%= link_to('Edit task', edit_task_path(task)) %></td>
+      </tr>
     </tr>
     <% end %>
   </table>

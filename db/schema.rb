@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_19_113627) do
 
   create_table "task_lists", force: :cascade do |t|
     t.boolean "hidden", default: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_19_113627) do
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
-    t.datetime "deadline", precision: nil, null: false
+    t.datetime "deadline", precision: nil
     t.integer "task_list_id", null: false
     t.boolean "done", default: false
     t.datetime "created_at", null: false
