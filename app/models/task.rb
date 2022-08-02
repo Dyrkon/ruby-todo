@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Tasks < ApplicationRecord
+class Task < ApplicationRecord
   belongs_to :task_lists
 end
