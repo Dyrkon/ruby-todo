@@ -8,7 +8,6 @@ class TaskListsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # Fixed ID ??? TODO
   test 'should get show' do
     get task_lists_path(task_lists(:one))
     assert_response :success
@@ -19,15 +18,13 @@ class TaskListsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # Fixed ID ??? TODO
   test 'should get edit' do
     get edit_task_list_path(task_lists(:one))
     assert_response :success
   end
 
-  # Fixed ID ??? TODO
   test 'should get delete' do
-    get delete_task_list_path(task_lists(:one))
+    get task_list_path(task_lists(:one))
     assert_response :success
   end
 end

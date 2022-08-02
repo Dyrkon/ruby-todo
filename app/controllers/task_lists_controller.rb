@@ -2,7 +2,7 @@
 
 class TaskListsController < ApplicationController
   def index
-    @task_lists = TaskList.order('created_at ASC')
+    @task_lists = TaskList.where(hidden: false).order('created_at ASC')
   end
 
   def show
@@ -17,8 +17,6 @@ class TaskListsController < ApplicationController
   def edit; end
 
   def update; end
-
-  def delete; end
 
   def destroy; end
 

@@ -13,8 +13,6 @@ class TasksController < ApplicationController
 
   def update; end
 
-  def delete; end
-
   def destroy; end
 
   private

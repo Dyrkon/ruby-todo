@@ -8,7 +8,6 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # Fixed ID ??? TODO
   test 'should get show' do
     get task_path(tasks(:one))
     assert_response :success
@@ -19,15 +18,13 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # Fixed ID ??? TODO
   test 'should get edit' do
     get edit_task_path(tasks(:one))
     assert_response :success
   end
 
-  # Fixed ID ??? TODO
   test 'should get delete' do
-    get delete_task_path(tasks(:one))
+    get task_path(tasks(:one))
     assert_response :success
   end
 end

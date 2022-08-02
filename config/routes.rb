@@ -2,7 +2,6 @@
 
 Rails.application.routes.draw do
   root 'application#index'
-  get 'index', to: 'application#index'
 
   resources :task_lists do
     member do
