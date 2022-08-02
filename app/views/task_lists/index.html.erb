@@ -19,7 +19,7 @@
         <td class="actions">
           <%= link_to("Show", task_list_path(list.id), :class => 'action show') %>
           <%= link_to("Edit", edit_task_list_path(list), :class => 'action edit') %>
-          <%= link_to("Delete", '#', :class => 'action delete') %>
+          <%= link_to("Delete", delete_task_list_path(list), :class => 'action delete') %>
         </td>
       </tr>
     <% end %>
