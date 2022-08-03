@@ -3,15 +3,10 @@
 Rails.application.routes.draw do
   root 'application#index'
 
-  resources :task_lists do
-    member do
-      get :delete
-    end
-  end
+  get '/task_lists/:task_list_id/new', to: 'task_lists#add_task', as: 'add_task'
+  post '/tasks/:task_list_id', to: 'tasks#create', as: 'create_task'
 
-  resources :tasks do
-    member do
-      get :delete
-    end
-  end
+  resources :task_lists
+
+  resources :tasks
 end

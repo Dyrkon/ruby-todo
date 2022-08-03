@@ -1,19 +1,47 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  def index; end
+  def index
+    @tasks = Task.where(task_list_id: params[:id]).where(done: false)
+  end
 
-  def show; end
+  def show
+    @task = Task.find(params[:id])
+  end
 
-  def new; end
+  def new
+    @task = Task.new
+  end
 
-  def create; end
+  def create
+    @task = Task.new(task_params)
+    @task.task_list_id = params[:task_list_id]
 
-  def edit; end
+    if @task.save
+      redirect_to(task_list_path(@task.task_list_id))
+    else
+      render('task_lists/add_task')
+    end
+  end
 
-  def update; end
+  def edit
+    @task = Task.find(params[:id])
+  end
 
-  def destroy; end
+  def update
+    @task = Task.find(params[:id])
+
+    if @task.update(task_params)
+      redirect_to(task_list_path(@task.task_list_id))
+    else
+      render('tasks/edit')
+    end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+  end
 
   private
 

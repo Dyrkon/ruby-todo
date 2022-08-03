@@ -13,18 +13,13 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get new' do
-    get new_task_path
-    assert_response :success
-  end
-
   test 'should get edit' do
     get edit_task_path(tasks(:one))
     assert_response :success
   end
 
   test 'should get delete' do
-    get task_path(tasks(:one))
+    delete task_path(tasks(:one))
     assert_response :success
   end
 end

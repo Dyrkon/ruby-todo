@@ -24,7 +24,11 @@ class TaskListsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get delete' do
-    get task_list_path(task_lists(:one))
-    assert_response :success
+    list = TaskList.create(name: 'New')
+    id = list.id
+
+    delete task_list_path(list)
+
+    assert_raises(ActiveRecord::RecordNotFound) { TaskList.find(id) }
   end
 end
