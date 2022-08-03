@@ -39,9 +39,9 @@ class TaskListsController < ApplicationController
     end
   end
 
-  def delete; end
-
-  def destroy; end
+  def destroy
+    @task_list = TaskList.find(params[:id])
+  end
 
   private
 

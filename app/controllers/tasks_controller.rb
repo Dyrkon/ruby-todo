@@ -21,9 +21,9 @@ class TasksController < ApplicationController
     end
   end
 
-  def delete; end
+  def destroy
 
-  def destroy; end
+  end
 
   private
 
