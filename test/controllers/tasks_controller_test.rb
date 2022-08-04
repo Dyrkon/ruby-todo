@@ -8,11 +8,6 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get show' do
-    get task_path(tasks(:one))
-    assert_response :success
-  end
-
   test 'should get edit' do
     get edit_task_path(tasks(:one))
     assert_response :success

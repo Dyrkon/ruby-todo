@@ -7,7 +7,7 @@ class TaskListsController < ApplicationController
 
   def show
     @task_list = TaskList.find(params[:id])
-    @tasks = Task.where(task_list_id: @task_list.id).where(done: false)
+    @tasks = Task.where(task_list_id: @task_list.id).where(done: false).order('deadline ASC')
   end
 
   def new

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'users/new'
+  get 'user/new'
   root 'application#index'
 
   get '/task_lists/:task_list_id/new', to: 'task_lists#add_task', as: 'add_task'

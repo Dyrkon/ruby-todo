@@ -16,13 +16,15 @@
       </tr>
       <tr>
         <th>Deadline</th>
-        <td><%= f.date_field(:deadline) %></td>
+        <td><%= f.date_field(:deadline, min: Time.now) %></td>
       </tr>
       <tr>
         <th>Done</th>
         <td><%= f.check_box(:done) %></td>
       </tr>
     </table>
+
+    <h3><%= @task.errors %></h3>
 
     <div class="form-buttons">
       <%= f.submit("New Task") %>

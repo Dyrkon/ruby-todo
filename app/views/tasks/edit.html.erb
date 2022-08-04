@@ -17,7 +17,7 @@
       </tr>
       <tr>
         <th>Deadline</th>
-        <td><%= f.text_field(:deadline) %></td>
+        <td><%= f.date_field(:deadline, min: Time.now) %></td>
       </tr>
       <tr>
         <th>Done</th>
