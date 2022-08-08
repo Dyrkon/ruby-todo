@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TaskListsController < ApplicationController
+  before_action :require_login
+
   def index
     @task_lists = TaskList.where(hidden: false).order('created_at ASC')
   end
