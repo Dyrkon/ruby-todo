@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def new
     @user = User.new
@@ -10,9 +12,9 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to(task_lists_path)
     else
-      flash.notice = "Wrong password or email"
+      flash.notice = 'Wrong password or email'
       @user = User.new
-      render("sessions/new")
+      render('sessions/new')
     end
   end
 

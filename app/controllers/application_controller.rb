@@ -6,9 +6,7 @@ class ApplicationController < ActionController::Base
   def index; end
 
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   private
@@ -16,13 +14,12 @@ class ApplicationController < ActionController::Base
   def require_login
     if session[:user_id]
       if current_user.nil?
-        flash[:error] = "You must be logged in to access this section"
+        flash[:error] = 'You must be logged in to access this section'
         redirect_to sign_in_path
       end
     else
-      flash[:error] = "You must be logged in to access this section"
+      flash[:error] = 'You must be logged in to access this section'
       redirect_to sign_in_path
     end
   end
-
 end
