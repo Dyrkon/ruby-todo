@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
+  before_action :require_login
+
   def index
     @tasks = Task.where(task_list_id: params[:id]).where(done: false)
   end

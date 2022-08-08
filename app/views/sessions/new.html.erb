@@ -1,8 +1,6 @@
 <h1>Sign in</h1>
 
-<%  if @error != "" %>
-  <p><%= @error %></p>
-<%  end %>
+<%= flash.notice %>
 
 <%= form_for(@user, url: sign_in_path(@user)) do |f| %>
   <table>
@@ -19,16 +17,5 @@
   <div class="form-buttons">
     <%= f.submit("Sign in") %>
   </div>
-
-  <%
-=begin%>
- <table>
-    <tr>
-      <td>Don\t have an account?</td>
-      <td><%= link_to("Sign up", ) %></td>
-    </tr>
-  <table> 
-<%
-=end%>
 
 <% end %>
