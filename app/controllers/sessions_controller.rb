@@ -12,9 +12,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to(task_lists_path)
     else
-      flash.notice = 'Wrong password or email'
-      @user = User.new
-      render('sessions/new')
+      redirect_to('/sessions/new', alert: 'Wrong email or password')
     end
   end
 

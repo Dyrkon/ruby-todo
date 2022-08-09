@@ -3,12 +3,13 @@
 class TaskListsController < ApplicationController
   before_action :require_login
 
+  before_action :find_task_list, only: %i[show edit update destroy]
+
   def index
     @task_lists = TaskList.where(hidden: false).order('created_at ASC')
   end
 
   def show
-    @task_list = TaskList.find(params[:id])
     @tasks = Task.where(task_list_id: @task_list.id).where(done: false).order('deadline ASC')
   end
 
@@ -26,13 +27,9 @@ class TaskListsController < ApplicationController
     end
   end
 
-  def edit
-    @task_list = TaskList.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @task_list = TaskList.find(params[:id])
-
     if @task_list.update(task_list_params)
       redirect_to(task_lists_path(@task_list))
     else
@@ -45,14 +42,20 @@ class TaskListsController < ApplicationController
   end
 
   def destroy
-    @task_list = TaskList.find(params[:id])
-    @task_list.destroy
-    redirect_to('/task_lists/index')
+    if @task_list.destroy
+      redirect_to('/task_lists/index')
+    else
+      redirect_to('/task_lists/index', alert: 'Failed to delete the task list')
+    end
   end
 
   private
 
   def task_list_params
     params.require(:task_list).permit(:name, :hidden)
+  end
+
+  def find_task_list
+    @task_list = TaskList.find(params[:id])
   end
 end

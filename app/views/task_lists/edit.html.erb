@@ -2,6 +2,12 @@
 
 <%= link_to("<< Back to List", task_lists_path, :class => 'back-link') %>
 
+<% @task_list.errors.each do |error| %>
+    <div>
+    <%= error.full_message %>
+    </div>
+  <% end %>
+
 <div class="task_list new">
   <h2>Edit task list</h2>
 

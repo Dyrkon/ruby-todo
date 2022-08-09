@@ -4,6 +4,12 @@
 <div class="task new">
   <h2>Edit task</h2>
 
+  <% @task.errors.each do |error| %>
+    <div>
+    <%= error.full_message %>
+    </div>
+  <% end %>
+
   <%= form_for(@task, :url => create_task_url, method: :post) do |f| %>
     <table>
       <tr>
@@ -23,8 +29,6 @@
         <td><%= f.check_box(:done) %></td>
       </tr>
     </table>
-
-    <h3><%= @task.errors %></h3>
 
     <div class="form-buttons">
       <%= f.submit("New Task") %>

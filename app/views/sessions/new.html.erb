@@ -1,6 +1,6 @@
 <h1>Sign in</h1>
 
-<%= flash.notice %>
+<p><%= flash.alert %></p>
 
 <%= form_for(@user, url: sign_in_path(@user)) do |f| %>
   <table>

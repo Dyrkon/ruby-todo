@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :require_login
-
   def index; end
 
   def current_user
@@ -13,13 +11,9 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if session[:user_id]
-      if current_user.nil?
-        flash[:error] = 'You must be logged in to access this section'
-        redirect_to sign_in_path
-      end
+      redirect_to sign_in_path, alert: 'You must be logged in to access this section' if current_user.nil?
     else
-      flash[:error] = 'You must be logged in to access this section'
-      redirect_to sign_in_path
+      redirect_to sign_in_path, alert: 'You must be logged in to access this section'
     end
   end
 end

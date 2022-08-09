@@ -5,6 +5,12 @@
 <div class="task edit">
   <h2>Edit task</h2>
 
+  <% @task.errors.each do |error| %>
+    <div>
+    <%= error.full_message %>
+    </div>
+  <% end %>
+
   <%= form_for(@task) do |f| %>
     <table>
       <tr>
