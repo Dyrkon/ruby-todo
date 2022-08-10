@@ -43,9 +43,9 @@ class TaskListsController < ApplicationController
 
   def destroy
     if @task_list.destroy
-      redirect_to('/task_lists/index')
+      redirect_to('/task_lists', alert: 'Successfully removed task list')
     else
-      redirect_to('/task_lists/index', alert: 'Failed to delete the task list')
+      redirect_to('/task_lists', alert: 'Failed to delete the task list')
     end
   end
 
@@ -56,6 +56,7 @@ class TaskListsController < ApplicationController
   end
 
   def find_task_list
+    # require 'pry'; binding.pry
     @task_list = TaskList.find(params[:id])
   end
 end
