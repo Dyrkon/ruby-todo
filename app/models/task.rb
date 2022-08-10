@@ -12,4 +12,6 @@ class Task < ApplicationRecord
             length: { maximum: 256 }
 
   validates :task_list_id, presence: true
+
+  validates :deadline, presence: true
 end
