@@ -3,6 +3,8 @@
 require 'test_helper'
 
 class TaskListsControllerTest < ActionDispatch::IntegrationTest
+  def setup; end
+
   test 'should get index' do
     get task_lists_path
     assert_response :success

@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   get '/sign_in', to: 'sessions#new', as: 'sign_in'
   post '/sign_in', to: 'sessions#create'
-  get '/sign_out', to: 'sessions#destroy'
-  # get '/sign_up', to: 'sessions#sign_up', as: 'sign_up'
+  get '/sign_up', to: 'sessions#sign_up', as: 'sign_up'
+  post '/sign_up', to: 'sessions#create_account'
   resources :sessions, only: [:create]
 
   get '/task_lists/:task_list_id/new', to: 'task_lists#add_task', as: 'add_task'

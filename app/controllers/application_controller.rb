@@ -5,15 +5,13 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  rescue ActiveRecord::RecordNotFound
+    @current_user = nil
   end
 
   private
 
   def require_login
-    if session[:user_id]
-      redirect_to sign_in_path, alert: 'You must be logged in to access this section' if current_user.nil?
-    else
-      redirect_to sign_in_path, alert: 'You must be logged in to access this section'
-    end
+    redirect_to sign_up_path, alert: 'You must be logged in to access this section' if session[:user_id].nil?
   end
 end

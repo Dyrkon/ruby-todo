@@ -12,7 +12,21 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to(task_lists_path)
     else
-      redirect_to('/sessions/new', alert: 'Wrong email or password')
+      redirect_to('/sign_in', alert: 'Wrong email or password')
+    end
+  end
+
+  def sign_up
+    @user = User.new
+  end
+
+  def create_account
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to('/sign_in', alert: 'Account created, sign in.')
+    else
+      render('/sign_up')
     end
   end
 
