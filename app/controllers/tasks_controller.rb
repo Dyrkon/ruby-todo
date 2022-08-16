@@ -3,13 +3,7 @@
 class TasksController < ApplicationController
   before_action :require_login
 
-  before_action :find_task, only: %i[show edit update destroy]
-
-  def index
-    @tasks = Task.where(task_list_id: params[:id]).where(done: false)
-  end
-
-  def show; end
+  before_action :find_task, only: %i[edit update destroy]
 
   def new
     @task = Task.new
@@ -37,7 +31,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
+    if @task.destroy
+      redirect_to(task_list_path(@task.task_list_id), alert: 'Successfully removed task')
+    else
+      redirect_to(task_list_path(@task.task_list_id), alert: 'Failed to delete the task')
+    end
   end
 
   private
@@ -47,6 +45,6 @@ class TasksController < ApplicationController
   end
 
   def find_task
-    @task = Task.find(params[:id])
+    @task = Task.find_by(id: params[:id])
   end
 end

@@ -6,11 +6,11 @@ class TaskListsController < ApplicationController
   before_action :find_task_list, only: %i[show edit update destroy]
 
   def index
-    @task_lists = TaskList.where(hidden: false).order('created_at ASC')
+    @task_lists = TaskList.where(hidden: false).order('created_at')
   end
 
   def show
-    @tasks = Task.where(task_list_id: @task_list.id).where(done: false).order('deadline ASC')
+    @tasks = Task.where(task_list_id: @task_list.id).where(done: false).order('deadline')
   end
 
   def new
@@ -56,7 +56,6 @@ class TaskListsController < ApplicationController
   end
 
   def find_task_list
-    # require 'pry'; binding.pry
     @task_list = TaskList.find(params[:id])
   end
 end
