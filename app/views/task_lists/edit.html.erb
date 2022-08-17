@@ -1,0 +1,31 @@
+<h1>Edit Task List</h1>
+
+<%= link_to("<< Back to List", task_lists_path, :class => 'back-link') %>
+
+<% @task_list.errors.each do |error| %>
+    <div>
+    <%= error.full_message %>
+    </div>
+  <% end %>
+
+<div class="task_list edit">
+  <h2>Edit task list</h2>
+
+  <%= form_for(@task_list) do |f| %>
+    <table>
+      <caption>Edit task list</caption>
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Hide</th>
+        <td><%= f.check_box(:hidden) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= f.submit("Edit Task List") %>
+    </div>
+  <% end %>
+</div>

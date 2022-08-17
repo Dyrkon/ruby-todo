@@ -1,0 +1,21 @@
+<h1>Sign in</h1>
+
+<p><%= flash.alert %></p>
+
+<%= form_for(@user, url: sign_in_path(@user)) do |f| %>
+  <table>
+    <tr>
+      <th>Email</th>
+      <td><%= f.text_field(:email) %></td>
+    </tr>
+    <tr>
+      <th>Password</th>
+      <td><%= f.password_field(:password) %></td>
+    </tr>
+  </table>
+
+  <div class="form-buttons">
+    <%= f.submit("Sign in") %>
+  </div>
+
+<% end %>

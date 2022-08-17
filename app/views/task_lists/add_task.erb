@@ -1,0 +1,35 @@
+<h1>New Task</h1>
+<%= link_to("<< Back to List", task_list_path(@task.task_list_id), :class => 'back-link') %>
+
+<div class="task new">
+  <% @task.errors.each do |error| %>
+    <div>
+    <%= error.full_message %>
+    </div>
+  <% end %>
+
+  <%= form_for(@task, :url => create_task_url, method: :post) do |f| %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <td><%= f.text_field(:name) %></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><%= f.text_field(:description) %></td>
+      </tr>
+      <tr>
+        <th>Deadline</th>
+        <td><%= f.date_field(:deadline, min: Time.now) %></td>
+      </tr>
+      <tr>
+        <th>Done</th>
+        <td><%= f.check_box(:done) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= f.submit("New Task") %>
+    </div>
+  <% end %>
+</div>
