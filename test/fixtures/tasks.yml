@@ -4,8 +4,10 @@ one:
   name: Clen up living room
   description: Vacuum living room and take out the trash.
   deadline: Tue, 20 Jul 2021
+  task_list_id: 1
 
 two:
   name: Do homework
   description: Do the math homework. Go over Fourier transform once again.
   deadline: Thu, 20 Jul 2023
+  task_list_id: 2

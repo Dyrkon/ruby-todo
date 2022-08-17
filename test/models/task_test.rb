@@ -4,8 +4,9 @@ require 'test_helper'
 
 class TaskTest < ActiveSupport::TestCase
   test 'task regex should save' do
-    test_task = Task.new
-    assert test_task.valid?
+    test_task = Task.new(name: 'Task',
+                         description: 'Description', deadline: Time.now, task_list_id: 1)
+    assert_not test_task.valid?
   end
 
   test 'task regex numeric name' do
